@@ -1,12 +1,12 @@
 FROM node:22-alpine
 
-WORKDIR /app/front-end
+WORKDIR /app/frontend
 
-COPY front-end/package*.json ./
+COPY frontend/package*.json ./
 
 RUN npm install
 
-COPY front-end/ .
+COPY frontend/ .
 
 EXPOSE 5173
 
