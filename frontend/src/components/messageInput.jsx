@@ -14,7 +14,7 @@ function MessageInput() {
         try {
             console.log('Sending message:', val); // Debug log
             
-            const response = await fetch('http://localhost:5000/api/messages', {
+            const response = await fetch('http://localhost:5000/messages', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
