@@ -21,7 +21,7 @@ function MessageInput() {
                 },
                 body: JSON.stringify({
                     content: val,
-                    conversation_id: 'default'
+                    conversation_id: 'default' // TODO: Add conversation_id
                 })
             });
 

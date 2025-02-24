@@ -1,8 +1,15 @@
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
-engine = create_engine('sqlite:///chat.db')
+# Create data directory if it doesn't exist
+data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+os.makedirs(data_dir, exist_ok=True)
+
+# Configure database path
+db_path = os.path.join(data_dir, 'chat.db')
+engine = create_engine(f'sqlite:///{db_path}')
 Base = declarative_base()
 
 class Message(Base):
