@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { FaRobot } from "react-icons/fa";
 import Navbar from './components/navbar';
+import MessageInput from './components/messageInput';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       </header>
       <main role='main' className='flex-1'>
         <FaRobot />
+        <MessageInput />
         <h1>This is the main content</h1>
       </main>
     </div>
