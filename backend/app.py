@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from backend.api.routes import messages_bp, ollama_bp
+from api.routes import messages_bp, ollama_bp
 
 def create_app():
     app = Flask(__name__)
@@ -19,7 +19,7 @@ def create_app():
     })
 
     # Basic health check endpoint
-    @app.route('/api/health', methods=['GET'])
+    @app.route('/', methods=['GET'])
     def health_check():
         return jsonify({'status': 'healthy'})
     

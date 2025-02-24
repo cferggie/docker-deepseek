@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from db import create_message
+from .db import create_message
 import time
 
 messages_bp = Blueprint('messages', __name__)
