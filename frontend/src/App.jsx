@@ -5,18 +5,26 @@ import './App.css'
 import { FaRobot } from "react-icons/fa";
 import Navbar from './components/navbar';
 import MessageInput from './components/messageInput';
+import SideDrawer from './components/SideDrawer';
 
 function App() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   return (
-    <div className='page-container min-h-screen flex flex-col'>
-      <header className='w-full top-0 h-16'>
-        <Navbar />
-      </header>
-      <main role='main' className='flex-1'>
-        <FaRobot />
-        <MessageInput />
-        <h1>This is the main content</h1>
-      </main>
+    <div className='flex min-h-screen'>
+      <SideDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+      
+      {/* Main content container including navbar */}
+      <div className='flex-1 flex flex-col'>
+        <header className='w-full h-16'>
+          <Navbar isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+        </header>
+        <main role='main' className='flex-1'>
+          <div className='flex flex-col h-full justify-center items-center'>
+            <MessageInput />
+          </div>
+        </main>
+      </div>
     </div>
   )
 }
