@@ -11,7 +11,7 @@ def create_app():
 
     # Configure CORS to allow requests from your frontend domain
     CORS(app, resources={
-        r"/api/*": {  # Only apply CORS to routes starting with /api/
+        r"/*": {  # Only apply CORS to routes starting with /
             "origins": ["http://localhost:5173", "http://localhost:3000"],  # Allow both Vite and React default ports
             "methods": ["GET", "POST", "PUT", "DELETE"],  # List allowed methods
             "allow_headers": ["Content-Type"]  # List allowed headers
