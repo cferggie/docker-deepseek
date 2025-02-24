@@ -6,8 +6,8 @@ def create_app():
     app = Flask(__name__)
 
     # Register blueprints
-    app.register_blueprint(messages_bp, url_prefix='/api')
-    app.register_blueprint(ollama_bp, url_prefix='/api')
+    app.register_blueprint(messages_bp, url_prefix='/')
+    app.register_blueprint(ollama_bp, url_prefix='/')
 
     # Configure CORS to allow requests from your frontend domain
     CORS(app, resources={
