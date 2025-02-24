@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from .db import create_message
-import time
+from datetime import datetime
 
 messages_bp = Blueprint('messages', __name__)
 ollama_bp = Blueprint('ollama', __name__)
@@ -22,7 +22,7 @@ def messages():
                 content=data['content'],
                 role='user',
                 conversation_id=data.get('conversation_id', 'default'),
-                timestamp=int(time.time())
+                timestamp=int(datetime.now().timestamp())
             )
             return jsonify(message_data)
         except Exception as e:

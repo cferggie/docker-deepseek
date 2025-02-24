@@ -3,6 +3,7 @@ import {useState} from 'react';
 function MessageInput() {
     const [val, setVal] = useState('Ask Anything');
     const [isLoading, setIsLoading] = useState(false);
+    const [conversationId, setConversationId] = useState('default'); // This will have to be configured to grab the conversation id from the database
 
     const sendMessage = async () => {
         if (!val.trim()) {
@@ -21,7 +22,7 @@ function MessageInput() {
                 },
                 body: JSON.stringify({
                     content: val,
-                    conversation_id: 'default' // TODO: Add conversation_id
+                    conversation_id: conversationId
                 })
             });
 
