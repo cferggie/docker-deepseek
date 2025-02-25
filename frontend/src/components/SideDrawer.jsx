@@ -17,24 +17,24 @@ const navIcon = (
   </svg>
 );
 
-
 function SideDrawer({ isDrawerOpen, setIsDrawerOpen }) {
   return (
     <div 
-      className={`bg-base-200 transition-all duration-300 ease-in-out ${
-        isDrawerOpen ? 'w-80' : 'w-0'
-      } overflow-hidden`}
+      className={`fixed top-0 left-0 h-full w-80 bg-base-200 transition-transform duration-300 ease-in-out ${
+        isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}
     >
-      <div className="p-2 top-0">
+      <div className="p-2">
         {isDrawerOpen && (
           <button onClick={() => setIsDrawerOpen(false)} className="btn btn-ghost btn-circle mb-4">
             {navIcon}
           </button>
         )}
         <ul className="menu text-base-content">
-          <li><a>Homepage</a></li>
-          <li><a>Portfolio</a></li>
-          <li><a>About</a></li>
+          <li><a>Chat</a></li>
+          <li><a>Projects</a></li>
+          <li><a>Today</a></li>
+          <li><a>Previous</a></li>  {/* dynamically add previous chats */}
         </ul>
       </div>
     </div>
