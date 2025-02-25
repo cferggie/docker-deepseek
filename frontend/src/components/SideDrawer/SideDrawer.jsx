@@ -5,7 +5,7 @@ import { FiFolder } from "react-icons/fi";
 import { MdAdd } from "react-icons/md";
 import { useState, useEffect } from 'react';
 
-function SideDrawer2() {
+function SideDrawer() {
     const [chatHistory, setChatHistory] = useState([]);
 
     useEffect(() => {
@@ -72,4 +72,4 @@ function SideDrawer2() {
     )
 }
 
-export default SideDrawer2;
+export default SideDrawer;

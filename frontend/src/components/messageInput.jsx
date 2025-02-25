@@ -48,19 +48,24 @@ function MessageInput() {
     }
 
     return (
-        <div className='message-input'>
-            <input 
-                type='text' 
-                value={val} 
-                onChange={handleChange}
-                disabled={isLoading}
-            />
-            <button 
-                onClick={sendMessage} 
-                disabled={isLoading}
-            >
-                {isLoading ? 'Sending...' : 'Send'}
-            </button>
+        <div className='fixed bottom-0 w-full max-w-4xl mx-auto p-4'>
+            <div className='flex gap-2 items-center'>
+                <input 
+                    type='text' 
+                    value={val} 
+                    onChange={handleChange}
+                    disabled={isLoading}
+                    className='flex-1 input input-bordered w-full'
+                    placeholder='Ask anything...'
+                />
+                <button 
+                    onClick={sendMessage} 
+                    disabled={isLoading}
+                    className='btn btn-primary'
+                >
+                    {isLoading ? 'Sending...' : 'Send'}
+                </button>
+            </div>
         </div>
     );
 }
