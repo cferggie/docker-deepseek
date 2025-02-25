@@ -5,13 +5,13 @@ import { FiFolder } from "react-icons/fi";
 import { MdAdd } from "react-icons/md";
 import { useState, useEffect } from 'react';
 
-function SideDrawer() {
+function SideDrawer({ isOpen, onClose }) {
     const [chatHistory, setChatHistory] = useState([]);
 
     useEffect(() => {
         const fetchChatHistory = async () => {
             try {
-                const response = await fetch('http://localhost:5000/messages');
+                const response = await fetch('http://localhost:5000/messages/chat-history');
                 const data = await response.json();
                 setChatHistory(data);
             } catch (err) {
@@ -22,10 +22,10 @@ function SideDrawer() {
     }, []);
 
     return (
-        <aside className="h-screen w-80 bg-base-200">
+        <aside className={`fixed top-0 left-0 h-screen w-64 bg-base-200 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             <nav className="h-full flex flex-col">
-                <div className="flex justify-between items-center pl-2.5">
-                    <button className="btn btn-ghost btn-circle">
+                <div className="flex justify-between items-center pl-2.5 pt-2">
+                    <button className="btn btn-ghost btn-circle" onClick={onClose}>
                         <LuTableOfContents size={22} />
                     </button>
                     <button className="btn btn-ghost btn-circle">
@@ -36,35 +36,23 @@ function SideDrawer() {
                     <ul className="menu menu-vertical">
                         <li><a><BsChatLeftText size={16} /> Chat</a></li>
                         <li className="flex justify-between"><a><FiFolder size={16}/>Projects</a></li>
-                        
+
                         {/* Chat History Sections */}
                         <li className="menu-title pt-4">
                             <span>Today</span>
                         </li>
-                        {chatHistory.today.map(chat => (
-                            <li key={chat.id}><a className="pl-8 text-sm">{chat.title}</a></li>
-                        ))}
 
                         <li className="menu-title pt-2">
                             <span>Yesterday</span>
                         </li>
-                        {chatHistory.yesterday.map(chat => (
-                            <li key={chat.id}><a className="pl-8 text-sm">{chat.title}</a></li>
-                        ))}
 
                         <li className="menu-title pt-2">
                             <span>Last 7 Days</span>
                         </li>
-                        {chatHistory.lastWeek.map(chat => (
-                            <li key={chat.id}><a className="pl-8 text-sm">{chat.title}</a></li>
-                        ))}
 
                         <li className="menu-title pt-2">
                             <span>Older</span>
                         </li>
-                        {chatHistory.older.map(chat => (
-                            <li key={chat.id}><a className="pl-8 text-sm">{chat.title}</a></li>
-                        ))}
                     </ul>
                 </div>
             </nav>

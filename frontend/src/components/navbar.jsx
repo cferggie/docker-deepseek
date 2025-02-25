@@ -34,15 +34,13 @@ const searchIcon = (
   </svg>
 );
 
-function Navbar({ isDrawerOpen, setIsDrawerOpen }) {
+function Navbar({ onMenuClick }) {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        {!isDrawerOpen && (
-          <button onClick={() => setIsDrawerOpen(true)} className="btn btn-ghost btn-circle">
-            {navIcon}
-          </button>
-        )}
+        <button onClick={onMenuClick} className="btn btn-ghost btn-circle">
+          {navIcon}
+        </button>
       </div>
       <div className="navbar-center">
         <a className="btn btn-ghost text-xl">daisyUI</a>
