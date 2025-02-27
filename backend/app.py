@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from api.routes import messages_bp, ollama_bp
+from api.routes import messages_bp
+from api.ollama_routes import ollama_bp
 
 def create_app():
     app = Flask(__name__)
