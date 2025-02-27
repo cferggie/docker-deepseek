@@ -56,7 +56,6 @@ def get_conversation_messages(conversation_id: str) -> list[dict]:
     try:
         # the filter may be unnecessary, but it's here to be safe
         messages = session.query(Message)\
-            .filter(Message.conversation_id == conversation_id)\
             .order_by(Message.timestamp)\
             .all()
         
