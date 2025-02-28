@@ -55,6 +55,12 @@ function SideDrawer({ isOpen, onClose }) {
                             <span>Today</span>
                         </li>
 
+                        {chatHistory.map((chat, index) => (
+                            <li key={chat.id || index}>
+                                <a>{chat.content || 'No content'}</a>
+                            </li>
+                        ))}
+
                         <li className="menu-title pt-2">
                             <span>Yesterday</span>
                         </li>
