@@ -51,13 +51,16 @@ def create_message(content: str, role: str, conversation_id: str, timestamp: int
     finally:
         session.close()
 
-def get_conversation_messages(conversation_id: str) -> list[dict]:
+def get_conversation_messages(conversation_id: str = None) -> list[dict]:
     session = Session()
     try:
-        # the filter may be unnecessary, but it's here to be safe
-        messages = session.query(Message)\
-            .order_by(Message.timestamp)\
-            .all()
+        # Query messages, optionally filtering by conversation_id
+        query = session.query(Message).order_by(Message.timestamp)
+        
+        if conversation_id:
+            query = query.filter(Message.conversation_id == conversation_id)
+            
+        messages = query.all()
         
         # Convert messages to dictionaries before closing the session
         return [{

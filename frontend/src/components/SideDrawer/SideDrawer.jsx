@@ -11,8 +11,21 @@ function SideDrawer({ isOpen, onClose }) {
     useEffect(() => {
         const fetchChatHistory = async () => {
             try {
-                const response = await fetch('http://localhost:5000/messages/chat-history');
+                const response = await fetch('http://localhost:5000/messages', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Description': 'retrieve chat history',
+                        'Context': 'chat-history',
+                    },
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
                 const data = await response.json();
+                console.log('Chat history:', data);
                 setChatHistory(data);
             } catch (err) {
                 console.error('Error fetching chat history:', err);
