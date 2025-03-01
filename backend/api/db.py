@@ -15,6 +15,7 @@ Base = declarative_base()
 class Message(Base):
     __tablename__ = 'messages'
 
+    # conversation_id should be made the primary key later
     id = Column(Integer, primary_key=True)
     content = Column(String, nullable=False)
     timestamp = Column(Integer, nullable=False)

@@ -56,7 +56,7 @@ function SideDrawer({ isOpen, onClose }) {
                         </li>
 
                         {chatHistory.map((chat, index) => (
-                            <li key={chat.id || index}>
+                            <li key={chat.conversation_id || index}>
                                 <a>{chat.content || 'No content'}</a>
                             </li>
                         ))}
